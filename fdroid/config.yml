@@ -1,0 +1,24 @@
+# fdroidserver's config for the repo at fdroid.nouritsu.com; nix run .#fdroid-repo builds
+# it (nix/fdroid-repo.nix) for every app in apps.json. Every key is explained in
+# fdroidserver's example config:
+# https://gitlab.com/fdroid/fdroidserver/-/blob/master/examples/config.yml
+repo_url: https://fdroid.nouritsu.com/repo
+repo_name: nouritsu
+repo_description: >-
+  Apps by nouritsu, as built and signed by their author: Fast Track, an intermittent
+  fasting tracker, and Karteikasten, flashcards for the 2,000 most common German words.
+  Source: https://github.com/nouritsu
+
+# The newest three versions of each app stay in repo/; older ones move to archive/, a
+# second repo clients can add to downgrade. The publish workflow downloads twice this
+# many releases of each app, so the archive keeps as many again.
+archive_older: 3
+archive_name: nouritsu archive
+archive_description: Older versions of nouritsu's apps.
+
+# The repo's signing key. nix/fdroid-repo.nix sets these variables from its arguments
+# and passes the passwords through, so no path or password is written here.
+keystore: {env: FDROID_REPO_KEYSTORE}
+repo_keyalias: {env: FDROID_REPO_KEY_ALIAS}
+keystorepass: {env: FDROID_REPO_KEYSTORE_PASS}
+keypass: {env: FDROID_REPO_KEY_PASS}
