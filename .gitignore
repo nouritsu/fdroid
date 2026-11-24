@@ -1,6 +1,0 @@
-# Nix
-result
-result-*
-
-# The built site: nix run .#fdroid-repo
-/out/
